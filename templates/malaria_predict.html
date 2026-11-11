@@ -1,0 +1,29 @@
+{% if pred == 1 %}
+    <div style="
+        background-color: #ffe6e6;
+        border: 2px solid #ff4d4d;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    ">
+        <h4 style="color: #cc0000; font-size: 22px;">⚠️ Infected Cell Detected</h4>
+        <p style="font-size: 30px;">This cell is a <strong>Malarial infected cell.</strong></p>
+        <p style="font-size: 25px;"><strong>Confidence:</strong> {{ prob }}%</p>
+    </div>
+{% else %}
+    <div style="
+        background-color: #e6ffe6;
+        border: 2px solid #33cc33;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    ">
+        <h4 style="color: #006600; font-size: 22px;">✅ Healthy Cell</h4>
+        <p style="font-size: 30px;">This cell is <strong>not infected.</strong></p>
+        <p style="font-size: 25px;"><strong>Confidence:</strong> {{ prob }}%</p>
+    </div>
+{% endif %}

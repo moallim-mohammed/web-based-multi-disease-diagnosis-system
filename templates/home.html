@@ -1,0 +1,90 @@
+{% extends 'main.html' %}
+{% block content %}
+
+{% if message %}
+<div class="container mt-3">
+    <div class="alert alert-danger text-center">{{ message }}</div>
+</div>
+{% endif %}
+
+<div class="container my-5">
+
+    <!-- Main Card -->
+    <div class="card shadow-sm border-0 p-4">
+
+        <h2 class="text-center mb-4 fw-bold">
+            Web-Based Multi-Disease Diagnosis System <br>
+            <small class="text-muted fs-6">
+                Using Machine Learning and Deep Learning Models
+            </small>
+        </h2>
+
+        <!-- Diseases List -->
+        <div class="mb-4">
+    <h4 class="fw-semibold">Supported Diseases</h4>
+    <ul class="text-muted">
+        <li>Diabetes</li>
+        <li>Breast Cancer</li>
+        <li>Heart Disease</li>
+        <li>Kidney Disease</li>
+        <li>Liver Disease</li>
+        <li>Malaria</li>
+        <li>Pneumonia</li>
+    </ul>
+        </div>
+
+        <h4 class="fw-semibold mb-3">Disease Information</h4>
+
+        <!-- Disease Cards -->
+        {% for disease in [
+    ("Diabetes",
+    "Diabetes occurs when blood sugar levels are too high due to problems with insulin.",
+    ["Frequent urination", "Excessive thirst", "Fatigue", "Blurred vision"]),
+
+    ("Breast Cancer",
+    "Breast cancer forms in breast cells and is one of the most common cancers worldwide.",
+    ["Breast lump", "Change in breast size", "Skin dimpling", "Redness of skin"]),
+
+    ("Heart Disease",
+    "Heart disease refers to conditions affecting the heart, including blocked blood vessels.",
+    ["Chest pain", "Shortness of breath", "Fatigue", "Irregular heartbeat"]),
+
+    ("Chronic Kidney Disease",
+    "A gradual loss of kidney function that can lead to waste buildup in the body.",
+    ["Nausea", "Vomiting", "Weakness", "Muscle cramps"]),
+
+    ("Liver Disease",
+    "Liver disease affects the liver's ability to function properly and detoxify the body.",
+    ["Jaundice", "Abdominal pain", "Swelling", "Fatigue"]),
+
+    ("Malaria",
+    "A mosquito-borne infectious disease causing fever and flu-like symptoms.",
+    ["Fever", "Chills", "Headache", "Nausea"]),
+
+    ("Pneumonia",
+    "Pneumonia is an infection that inflames the air sacs in one or both lungs.",
+    ["Chest pain", "Cough with phlegm", "Fever", "Difficulty breathing"])
+] %}
+        
+        <div class="card border-0 shadow-sm mb-3">
+            <div class="card-body">
+                <h5 class="fw-bold">{{ disease[0] }}</h5>
+                <p class="text-muted">{{ disease[1] }}</p>
+
+                {% if disease[2] %}
+                <h6 class="fw-semibold">Symptoms</h6>
+                <ul class="text-muted">
+                    {% for symptom in disease[2] %}
+                    <li>{{ symptom }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

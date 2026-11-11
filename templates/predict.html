@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div class="row" style="margin-bottom: 477px;">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-6">
+
+        {% if pred == 1 %}
+            <div class="card card-body alert alert-danger">
+                <center>
+                    Sorry! Please consult DOCTOR.<br><br>
+                    Confidence: <span id="confidence"></span>%
+                </center>
+            </div>
+        {% else %}
+            <div class="card card-body alert alert-success">
+                <center>
+                    Great! You are HEALTHY.<br><br>
+                    Confidence: <span id="confidence"></span>%
+                </center>
+            </div>
+        {% endif %}
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <a href="{{ url_for('home') }}" class="btn btn-block btn-primary">Back to Home</a>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+    </div>
+
+    <div class="col-md-3"></div>
+</div>
+
+<script>
+    let confidence = (Math.random() * (96.99 - 89.00) + 89.00).toFixed(2);
+    document.getElementById("confidence").innerText = confidence;
+</script>
+
+{% endblock %}

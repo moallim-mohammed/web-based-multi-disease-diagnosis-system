@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="og:title" content="KVG Disease Predictor">
+  <meta name="author" content="VENU GOPAL KADAMBA">
+  <meta name="og:image" content="{{ url_for('static', filename='logo1.png') }}">
+  <meta name="keywords" content="Flask, Machine Learning, Deep Learning, AI, ML, DL, Web Development">
+  <meta name="description" content="A Machine Learning and Deep Learning based webapp for Multiple Disease Prediction.">
+  
+  <title>Disease Predictor</title>
+  <link rel="icon" href="{{ url_for('static', filename='logo1.png') }}" type="image/png">
+
+  <!-- Bootstrap & Font Awesome -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  
+  <!-- Optional: Custom CSS -->
+  <style>
+    /* Base styling */
+    html, body { 
+      height: 100%; 
+      margin: 0; 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 18px; /* increased base font */
+      line-height: 1.6;
+      background-color: #f9f9f9;
+    }
+
+    /* Header & Footer */
+    header, nav { z-index: 1000; }
+    footer {
+      height: 75px;
+      background-color: #212529;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      margin-top: auto;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #a3f63d !important;
+    }
+
+    .navbar .nav-link {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #000 !important;
+    }
+
+    .navbar .nav-link:hover {
+      color: #fff !important;
+    }
+
+    /* Main content spacing */
+    main {
+      flex: 1;
+      padding-top: 100px; /* compensate fixed navbar */
+      padding-bottom: 20px;
+    }
+
+    .card h2, .card h4, .card h5, .card h6 {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Increase font sizes for headings */
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.4rem; }
+    h3 { font-size: 2rem; }
+    h4 { font-size: 1.8rem; }
+    h5 { font-size: 1.5rem; }
+    h6 { font-size: 1.2rem; }
+
+    /* Cards styling */
+    .card {
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Alerts */
+    .alert {
+      font-size: 1.1rem;
+    }
+
+    /* Footer text */
+    footer p {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .navbar .nav-link {
+        font-size: 0.9rem;
+      }
+      main { padding-top: 130px; }
+    }
+  </style>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</head>
+<body class="d-flex flex-column">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <a class="navbar-brand" href="{{ url_for('home') }}">
+      <img src="{{ url_for('static', filename='logo4.png') }}" height="60" width="275" alt="KVG Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+          {% for page, endpoint in [
+            ("Home", 'home'),
+            ("Diabetes", 'diabetesPage'),
+            ("Breast Cancer", 'cancerPage'),
+            ("Heart", 'heartPage'),
+            ("Kidney", 'kidneyPage'),
+            ("Liver", 'liverPage'),
+            ("Malaria", 'malariaPage'),
+            ("Pneumonia", 'pneumoniaPage'),
+            ("Contact", 'contactPage')
+          ] %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for(endpoint) }}">{{ page }}</a>
+          </li>
+          {% endfor %}
+          </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container-fluid">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </main>
+
+  <!-- Footer -->
+   <footer>
+    Made by Ziya Ali Moallim
+  </footer>
+
+</body>
+</html>
